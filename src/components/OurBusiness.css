@@ -1,0 +1,407 @@
+/* Our Business Page Styles */
+.our-business-page {
+  padding-top: 70px;
+}
+
+/* Business Hero Section */
+.business-hero {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  color: var(--white);
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.business-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px;
+  animation: particle-float 20s infinite linear;
+}
+
+.business-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.business-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.business-hero p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Business Navigation */
+.business-navigation {
+  background: var(--white);
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--light-gray);
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+}
+
+.business-nav-tabs {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+
+.nav-tab {
+  background: var(--light-gray);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  color: var(--dark-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--accent-color, var(--primary-blue));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.nav-tab:hover::before,
+.nav-tab.active::before {
+  opacity: 1;
+}
+
+.nav-tab:hover,
+.nav-tab.active {
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Business Content */
+.business-content {
+  padding: 100px 0;
+  background: var(--light-gray);
+  min-height: 60vh;
+}
+
+/* Business Overview */
+.business-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.business-overview-card {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.business-overview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-color, var(--primary-blue));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.business-overview-card:hover::before {
+  transform: scaleX(1);
+}
+
+.business-overview-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px var(--shadow-dark);
+}
+
+.business-overview-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.business-overview-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+.business-overview-card p {
+  color: var(--gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.business-features h4 {
+  color: var(--accent-color, var(--primary-blue));
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.business-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.business-features li {
+  padding: 0.25rem 0;
+  color: var(--gray);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.business-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color, var(--primary-blue));
+  font-weight: bold;
+}
+
+/* Finance Business */
+.finance-business,
+.homeappliance-business,
+.kairali-business {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.finance-hero,
+.homeappliance-hero,
+.kairali-hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  align-items: center;
+}
+
+.finance-hero-text h3,
+.homeappliance-hero-text h3,
+.kairali-hero-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+.finance-hero-text p,
+.homeappliance-hero-text p,
+.kairali-hero-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--gray);
+}
+
+.finance-hero-stats,
+.homeappliance-hero-stats,
+.kairali-hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stat-item {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--shadow-dark);
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+/* Services and Products Grid */
+.services-grid,
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card,
+.product-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px var(--shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before,
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gold);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover::before,
+.product-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover,
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px var(--shadow-dark);
+}
+
+.service-icon,
+.product-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h4,
+.product-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+.service-card p,
+.product-card p {
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* Section Headers */
+.finance-business h3,
+.homeappliance-business h3,
+.kairali-business h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .business-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .business-nav-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-tab {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+  
+  .business-overview-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .finance-hero,
+  .homeappliance-hero,
+  .kairali-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .services-grid,
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .business-overview-card,
+  .service-card,
+  .product-card {
+    padding: 1.5rem;
+  }
+  
+  .stat-item {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation for tab switching */
+.business-content > div {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

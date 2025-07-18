@@ -13,11 +13,10 @@ import 'aos/dist/aos.css'
 import Navbar from './components/Navbar';
 import webBackJpg from './assets/webback.jpg';
 import chairmanImg from './assets/chairman.jpg';
-import airConditionerImg from './assets/appliances/airconditioner.png';
-import ceilingFanImg from './assets/appliances/ceilingfan.png';
-import microwaveOvenImg from './assets/appliances/microwaveoven.png';
-import refrigeratorImg from './assets/appliances/refrigerator.png';
-import tableFanImg from './assets/appliances/tablefan.png';
+import kitchenAppliancesImg from './assets/kitchenappliances.png';
+import essentialFurnitureImg from './assets/essentialfurniture.png';
+import electronicGadgetsImg from './assets/electronicgadjets.png';
+import afterSalesSupportImg from './assets/aftersalessupport.png';
 
 function useScrollAnimations() {
   const location = useLocation();
@@ -48,29 +47,24 @@ function useScrollAnimations() {
 
 const applianceCategories = [
   {
-    name: 'Air Conditioner',
-    image: airConditionerImg,
-    description: 'Stay cool and comfortable with our energy-efficient air conditioners.'
+    name: 'Kitchen Appliances',
+    image: kitchenAppliancesImg,
+    description: 'Refrigerators, ovens, dishwashers, and more for a modern kitchen.'
   },
   {
-    name: 'Ceiling Fan',
-    image: ceilingFanImg,
-    description: 'High-performance ceiling fans for every room.'
+    name: 'Essential Furnitures',
+    image: essentialFurnitureImg,
+    description: 'Chairs, tables, beds, and more for comfortable living.'
   },
   {
-    name: 'Microwave Oven',
-    image: microwaveOvenImg,
-    description: 'Quick and easy cooking with modern microwave ovens.'
+    name: 'Electronic Gadgets',
+    image: electronicGadgetsImg,
+    description: 'Smartphones, laptops, smart TVs, and more.'
   },
   {
-    name: 'Refrigerator',
-    image: refrigeratorImg,
-    description: 'Keep your food fresh with advanced refrigerators.'
-  },
-  {
-    name: 'Table Fan',
-    image: tableFanImg,
-    description: 'Portable table fans for flexible cooling.'
+    name: 'After-Sales Support',
+    image: afterSalesSupportImg,
+    description: 'Comprehensive maintenance and repair services.'
   }
 ]
 

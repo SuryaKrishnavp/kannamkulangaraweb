@@ -66,18 +66,20 @@ function App() {
     })
   }, [])
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home-appliance" element={<HomeAppliancePage />} />
-        <Route path="/kitchen-appliances" element={<KitchenAppliancesPage />} />
-        <Route path="/essential-furniture" element={<EssentialFurniturePage />} />
-        <Route path="/electronic-gadgets" element={<ElectronicGadgetsPage />} />
-        <Route path="/after-sales-support" element={<AfterSalesSupportPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-      </Routes>
-    </Router>
+    <div className="app">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home-appliance" element={<HomeAppliancePage />} />
+          <Route path="/kitchen-appliances" element={<KitchenAppliancesPage />} />
+          <Route path="/essential-furniture" element={<EssentialFurniturePage />} />
+          <Route path="/electronic-gadgets" element={<ElectronicGadgetsPage />} />
+          <Route path="/after-sales-support" element={<AfterSalesSupportPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        </Routes>
+      </Router>
+    </div>
   )
 }
 

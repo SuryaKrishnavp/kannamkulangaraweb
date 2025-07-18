@@ -10,14 +10,14 @@ import sujathaLogo from './assets/sujathalogo.png';
 import ushaLogo from './assets/ushalogo.svg';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import webBackground from './assets/webbackground.jpg';
-import webBackOne from './assets/webbackone.jpg';
-import webBackTwo from './assets/webbacktwo.jpg';
-import webBackVideo from './assets/webbackvideo.mp4';
-import kitchenAppliancesImg from './assets/kitchenappliances.png';
 import Navbar from './components/Navbar';
 import webBackJpg from './assets/webback.jpg';
 import chairmanImg from './assets/chairman.jpg';
+import airConditionerImg from './assets/appliances/airconditioner.png';
+import ceilingFanImg from './assets/appliances/ceilingfan.png';
+import microwaveOvenImg from './assets/appliances/microwaveoven.png';
+import refrigeratorImg from './assets/appliances/refrigerator.png';
+import tableFanImg from './assets/appliances/tablefan.png';
 
 function useScrollAnimations() {
   const location = useLocation();
@@ -48,24 +48,29 @@ function useScrollAnimations() {
 
 const applianceCategories = [
   {
-    name: 'Kitchen Appliances',
-    image: kitchenAppliancesImg,
-    description: 'Refrigerators, ovens, dishwashers, and more for a modern kitchen.'
+    name: 'Air Conditioner',
+    image: airConditionerImg,
+    description: 'Stay cool and comfortable with our energy-efficient air conditioners.'
   },
   {
-    name: 'Essential Furnitures',
-    image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80', // living room with furniture
-    description: 'Chairs, tables, beds, and more for comfortable living.'
+    name: 'Ceiling Fan',
+    image: ceilingFanImg,
+    description: 'High-performance ceiling fans for every room.'
   },
   {
-    name: 'Electronic Gadgets',
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80', // gadgets
-    description: 'Smartphones, laptops, smart TVs, and more.'
+    name: 'Microwave Oven',
+    image: microwaveOvenImg,
+    description: 'Quick and easy cooking with modern microwave ovens.'
   },
   {
-    name: 'After-Sales Support',
-    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80', // technician repair
-    description: 'Comprehensive maintenance and repair services.'
+    name: 'Refrigerator',
+    image: refrigeratorImg,
+    description: 'Keep your food fresh with advanced refrigerators.'
+  },
+  {
+    name: 'Table Fan',
+    image: tableFanImg,
+    description: 'Portable table fans for flexible cooling.'
   }
 ]
 
@@ -90,8 +95,12 @@ const Home = () => {
       if (scrollProgress) {
         const scrollTop = window.scrollY
         const docHeight = document.documentElement.scrollHeight - window.innerHeight
-        const scrollPercent = (scrollTop / docHeight) * 100
-        scrollProgress.style.width = `${scrollPercent}%`
+        if (docHeight > 0) {
+          const scrollPercent = (scrollTop / docHeight) * 100
+          scrollProgress.style.width = `${scrollPercent}%`
+        } else {
+          scrollProgress.style.width = '0%'
+        }
       }
       const sections = ['home', 'about', 'categories', 'brands', 'chairman', 'contact']
       const scrollPosition = window.scrollY + 100
@@ -106,6 +115,8 @@ const Home = () => {
       })
     }
     window.addEventListener('scroll', handleScroll)
+    // Initialize scroll progress bar on mount
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -157,7 +168,7 @@ const Home = () => {
         toggleMobileMenu={toggleMobileMenu}
       />
       {/* Hero Section */}
-      <section id="home" className="hero" data-aos="fade-up">
+      <section id="home" className="hero" data-aos="fade-up" data-aos-duration="1000">
         <div className="hero-background">
           <img
             src={webBackJpg}
@@ -166,29 +177,28 @@ const Home = () => {
           />
         </div>
         <div className="hero-content animate">
-          <h1 className="hero-title">
-            Welcome to Kannamkulangara Home Appliances
-            <span className="subtitle">Modern Living Starts Here</span>
+          <h1 className="hero-title" data-aos="fade-down" data-aos-delay="200">Welcome to Kannamkulangara Home Appliances
+            <span className="subtitle" data-aos="fade-left" data-aos-delay="400">Modern Living Starts Here</span>
           </h1>
-          <p className="hero-subtext">
+          <p className="hero-subtext" data-aos="fade-up" data-aos-delay="600">
             Discover the best in home appliances, smart systems, and energy-saving solutions for your home.
           </p>
-          <button className="cta-button" onClick={() => handleNavClick('categories')}>
+          <button className="cta-button" onClick={() => handleNavClick('categories')} data-aos="zoom-in" data-aos-delay="800">
             Shop Categories
           </button>
         </div>
-        <div className="scroll-indicator">
+        <div className="scroll-indicator" data-aos="fade-up" data-aos-delay="1000">
           <div className="scroll-arrow"></div>
         </div>
       </section>
       {/* About Us Section */}
-      <section id="about" className="about-section" data-aos="fade-up">
+      <section id="about" className="about-section" data-aos="fade-right" data-aos-delay="200">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
             <h2>About Us</h2>
           </div>
           <div className="about-content-grid">
-            <div className="about-text">
+            <div className="about-text" data-aos="fade-up" data-aos-delay="400">
               <p>
                 Kannamkulangara Home Appliances is dedicated to bringing the latest in home technology and comfort to families across India. With a legacy of trust and innovation, we offer a wide range of appliances and smart solutions designed to make your life easier, more efficient, and more enjoyable.
               </p>
@@ -196,21 +206,21 @@ const Home = () => {
                 Our mission is to deliver quality, reliability, and style in every product, while providing exceptional customer service and after-sales support. We believe in making modern living accessible to everyone.
               </p>
             </div>
-            <div className="about-image">
+            <div className="about-image" data-aos="zoom-in" data-aos-delay="600">
               <img src={logo} alt="About Kannamkulangara Home Appliances Logo" className="about-logo-img" />
             </div>
           </div>
         </div>
       </section>
       {/* Categories Section */}
-      <section id="categories" className="categories-section" data-aos="fade-up">
+      <section id="categories" className="categories-section" data-aos="fade-left" data-aos-delay="200">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
             <h2>Shop by Category</h2>
           </div>
           <div className="categories-grid">
             {applianceCategories.map((cat, idx) => (
-              <div className="category-card animate" key={cat.name} style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}>
+              <div className="category-card animate" key={cat.name} style={{ animationDelay: `${idx * 0.1 + 0.2}s` }} data-aos="zoom-in-up" data-aos-delay={400 + idx * 100}>
                 <img src={cat.image} alt={cat.name} className="category-img" />
                 <h3>{cat.name}</h3>
                 <p>{cat.description}</p>
@@ -221,29 +231,29 @@ const Home = () => {
         </div>
       </section>
       {/* Purchase Schemes Section */}
-      <section id="purchase-schemes" className="purchase-schemes-section">
+      <section id="purchase-schemes" className="purchase-schemes-section" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
             <h2>Purchase Schemes</h2>
             <p>Flexible and customer-friendly payment options for every need</p>
           </div>
           <div className="schemes-grid">
-            <div className="scheme-card animate">
+            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="400">
               <span className="scheme-icon">💰</span>
               <h4>Ready Cash Payment</h4>
               <p>Pay the full amount upfront and enjoy instant ownership of your appliance.</p>
             </div>
-            <div className="scheme-card animate">
+            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="500">
               <span className="scheme-icon">📆</span>
               <h4>10 Week EMI</h4>
               <p>Spread your payments over 10 weeks with zero hassle and easy approval.</p>
             </div>
-            <div className="scheme-card animate">
+            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="600">
               <span className="scheme-icon">🗓️</span>
               <h4>6 Months EMI (Low Interest)</h4>
               <p>Enjoy your appliance now and pay over 6 months with a very low interest rate.</p>
             </div>
-            <div className="scheme-card animate">
+            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="700">
               <span className="scheme-icon">🤝</span>
               <h4>Customer Friendly EMI Schemes</h4>
               <p>Choose from a variety of EMI plans designed to suit your budget and needs.</p>
@@ -252,34 +262,34 @@ const Home = () => {
         </div>
       </section>
       {/* Brand Partners Section */}
-      <section id="brands" className="brands-section" data-aos="fade-up">
+      <section id="brands" className="brands-section" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
             <h2>Our Brand Partners</h2>
             <p>We offer products from the world's leading home appliance brands</p>
           </div>
           <div className="brands-logos-grid">
-            <img src={lgLogo} alt="LG" className="brand-logo" />
-            <img src={samsungLogo} alt="Samsung" className="brand-logo" />
-            <img src={whirlpoolLogo} alt="Whirlpool" className="brand-logo" />
-            <img src={godrejLogo} alt="Godrej" className="brand-logo" />
-            <img src={sujathaLogo} alt="Sujatha" className="brand-logo" />
-            <img src={ushaLogo} alt="Usha" className="brand-logo" />
+            <img src={lgLogo} alt="LG" className="brand-logo" data-aos="zoom-in" data-aos-delay="400" />
+            <img src={samsungLogo} alt="Samsung" className="brand-logo" data-aos="zoom-in" data-aos-delay="500" />
+            <img src={whirlpoolLogo} alt="Whirlpool" className="brand-logo" data-aos="zoom-in" data-aos-delay="600" />
+            <img src={godrejLogo} alt="Godrej" className="brand-logo" data-aos="zoom-in" data-aos-delay="700" />
+            <img src={sujathaLogo} alt="Sujatha" className="brand-logo" data-aos="zoom-in" data-aos-delay="800" />
+            <img src={ushaLogo} alt="Usha" className="brand-logo" data-aos="zoom-in" data-aos-delay="900" />
             {/* Add more logos here if you add more files */}
           </div>
         </div>
       </section>
       {/* Chairman's Message & Vision Section */}
-      <section id="chairman" className="chairman-section" data-aos="fade-up">
+      <section id="chairman" className="chairman-section" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
             <h2>Chairman's Message & Vision</h2>
           </div>
           <div className="chairman-content-grid">
-            <div className="chairman-photo">
+            <div className="chairman-photo" data-aos="zoom-in" data-aos-delay="400">
               <img src={chairmanImg} alt="Chairman" className="chairman-img" />
             </div>
-            <div className="chairman-message-text">
+            <div className="chairman-message-text" data-aos="fade-up" data-aos-delay="500">
               <blockquote>
                 "At Kannamkulangara Home Appliances, our vision is to empower every home with smart, sustainable, and beautiful solutions. We are committed to innovation, quality, and customer satisfaction. Thank you for trusting us to be a part of your home."
               </blockquote>
@@ -298,14 +308,14 @@ const Home = () => {
         </div>
       </section>
       {/* Footer */}
-      <footer id="contact" className="footer" data-aos="fade-up">
+      <footer id="contact" className="footer" data-aos="fade-up" data-aos-delay="200">
         <div className="container">
           <div className="footer-content-grid">
-            <div className="footer-brand">
+            <div className="footer-brand" data-aos="fade-up" data-aos-delay="300">
               <h2>Kannamkulangara Home Appliances</h2>
               <p>Modern Living Starts Here</p>
             </div>
-            <div className="footer-links">
+            <div className="footer-links" data-aos="fade-up" data-aos-delay="400">
               <h4>Quick Links</h4>
               <ul>
                 <li><a href="#home" onClick={() => handleNavClick('home')}>Home</a></li>
@@ -318,13 +328,13 @@ const Home = () => {
                 <li><a href="/terms-and-conditions" style={{cursor:'pointer'}}>Terms & Conditions</a></li>
               </ul>
             </div>
-            <div className="footer-contact">
+            <div className="footer-contact" data-aos="fade-up" data-aos-delay="500">
               <h4>Contact</h4>
               <p>Thalore, Thaikkatusseri road<br />Thrissur, Kerala</p>
               <p>Phone: 8891966806</p>
               <p>Email: info@kannamkulangara.com</p>
             </div>
-            <div className="footer-social">
+            <div className="footer-social" data-aos="fade-up" data-aos-delay="600">
               <h4>Follow Us</h4>
               <div className="social-links">
                 <a href="https://www.linkedin.com/" className="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -346,7 +356,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="footer-bottom">
+          <div className="footer-bottom" data-aos="fade-up" data-aos-delay="700">
             <p>&copy; 2024 Kannamkulangara Home Appliances. All rights reserved.</p>
           </div>
         </div>

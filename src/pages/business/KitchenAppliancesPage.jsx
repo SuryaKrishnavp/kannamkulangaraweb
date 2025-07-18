@@ -1,11 +1,11 @@
 import Navbar from '../../components/Navbar';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ceilingFanImg from '../../assets/appliances/ceiling-fan.png';
-import tableFanImg from '../../assets/appliances/table-fan.png';
+import ceilingFanImg from '../../assets/appliances/ceilingfan.png';
+import tableFanImg from '../../assets/appliances/tablefan.png';
 import refrigeratorImg from '../../assets/appliances/refrigerator.png';
-import airConditionerImg from '../../assets/appliances/air-conditioner.png';
-import microwaveOvenImg from '../../assets/appliances/microwave-oven.png';
+import airConditionerImg from '../../assets/appliances/airconditioner.png';
+import microwaveOvenImg from '../../assets/appliances/microwaveoven.png';
 
 const kitchenProducts = [
   { name: 'Ceiling Fan', image: ceilingFanImg },

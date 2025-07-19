@@ -1,6 +1,9 @@
 import Navbar from '../../components/Navbar';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import laptopsImg from '../../assets/electronicgadgets/laptops.png';
+import smartphonesImg from '../../assets/electronicgadgets/smartphones.png';
+import smartTvImg from '../../assets/electronicgadgets/smarttv.jpeg';
 
 const ElectronicGadgetsPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,9 +34,9 @@ const ElectronicGadgetsPage = () => {
   };
 
   const gadgetsProducts = [
-    { name: 'Smartphone', image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Laptop', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Smart TV', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Smartphone', image: smartphonesImg },
+    { name: 'Laptop', image: laptopsImg },
+    { name: 'Smart TV', image: smartTvImg },
     { name: 'Tablet', image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
     { name: 'Smart Watch', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
     { name: 'Bluetooth Speaker', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },

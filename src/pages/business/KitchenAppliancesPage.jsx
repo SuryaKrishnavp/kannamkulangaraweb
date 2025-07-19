@@ -6,6 +6,12 @@ import tableFanImg from '../../assets/appliances/tablefan.png';
 import refrigeratorImg from '../../assets/appliances/refrigerator.png';
 import airConditionerImg from '../../assets/appliances/airconditioner.png';
 import microwaveOvenImg from '../../assets/appliances/microwaveoven.png';
+import inductionCooktopImg from '../../assets/appliances/inductioncooktop.png';
+import waterPurifierImg from '../../assets/appliances/waterpurifier.png';
+import mixerGrinderImg from '../../assets/appliances/mixergrinder.png';
+import airFryerImg from '../../assets/appliances/airfryer.png';
+import electricKettleImg from '../../assets/appliances/electrickettle.png';
+import pressureCookerImg from '../../assets/appliances/pressurecooker.png';
 
 const kitchenProducts = [
   { name: 'Ceiling Fan', image: ceilingFanImg },
@@ -13,55 +19,12 @@ const kitchenProducts = [
   { name: 'Refrigerator', image: refrigeratorImg },
   { name: 'Air Conditioner', image: airConditionerImg },
   { name: 'Microwave Oven', image: microwaveOvenImg },
-  { name: 'Mixer Grinder', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Induction Cooktop', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Water Purifier', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Dishwasher', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Toaster', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Electric Kettle', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Pressure Cooker', image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Chimney', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Gas Stove', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Juicer', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Hand Blender', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Coffee Maker', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Food Processor', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Blender', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Grill', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Sandwich Maker', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Roti Maker', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Pop-up Toaster', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Deep Fryer', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Air Fryer', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Electric Tandoor', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'OTG Oven', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Slow Cooker', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Instant Pot', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Egg Boiler', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Water Heater', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Room Heater', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Geyser', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Immersion Rod', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Electric Iron', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Steam Iron', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Vacuum Cleaner', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Washing Machine', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Dryer', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Cloth Steamer', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Sewing Machine', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Sewing Kit', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Chopper', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Hand Mixer', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Food Scale', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Weighing Machine', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Timer', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Scissors', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Tongs', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Gloves', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Apron', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Mat', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Kitchen Rack', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Induction Cooktop', image: inductionCooktopImg },
+  { name: 'Water Purifier', image: waterPurifierImg },
+  { name: 'Mixer Grinder', image: mixerGrinderImg },
+  { name: 'Air Fryer', image: airFryerImg },
+  { name: 'Electric Kettle', image: electricKettleImg },
+  { name: 'Pressure Cooker', image: pressureCookerImg },
 ];
 
 const whatsappNumber = '8891966806';

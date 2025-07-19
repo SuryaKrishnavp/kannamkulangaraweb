@@ -57,7 +57,7 @@ function App() {
   useEffect(() => {
     AOS.init({
       duration: 900,
-      once: true,
+      once: false, // Allow animation every time element enters viewport
       offset: 40,
       easing: 'ease-in-out',
       disable: false // Always enable AOS, even on mobile

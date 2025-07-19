@@ -8,3 +8,5 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+
+// Remove the handleCardVisibility scroll observer and related event listeners for .card.visible

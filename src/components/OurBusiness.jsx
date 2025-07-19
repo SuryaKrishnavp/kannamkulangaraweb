@@ -89,7 +89,7 @@ const BusinessOverview = () => {
       </div>
       <div className="business-overview-grid">
         {businessUnits.map((unit, index) => (
-          <div key={index} className="business-overview-card" style={{ '--accent-color': unit.color }}>
+          <div key={index} className="business-overview-card card" style={{ '--accent-color': unit.color }}>
             <div className="business-overview-icon">{unit.icon}</div>
             <h3>{unit.name}</h3>
             <p>{unit.description}</p>
@@ -142,22 +142,22 @@ const HomeApplianceBusiness = () => {
         <div className="homeappliance-products">
           <h3>Our Product Categories</h3>
           <div className="products-grid">
-            <div className="product-card">
+            <div className="product-card card">
               <div className="product-icon">🍳</div>
               <h4>Kitchen Appliances</h4>
               <p>Modern kitchen appliances including refrigerators, washing machines, dishwashers, and cooking equipment.</p>
             </div>
-            <div className="product-card">
+            <div className="product-card card">
               <div className="product-icon">🏠</div>
               <h4>Smart Home Systems</h4>
               <p>Integrated smart home solutions for lighting, security, climate control, and entertainment.</p>
             </div>
-            <div className="product-card">
+            <div className="product-card card">
               <div className="product-icon">⚡</div>
               <h4>Energy Efficient Products</h4>
               <p>Eco-friendly appliances designed to reduce energy consumption and environmental impact.</p>
             </div>
-            <div className="product-card">
+            <div className="product-card card">
               <div className="product-icon">🔧</div>
               <h4>After-Sales Support</h4>
               <p>Comprehensive maintenance and repair services to ensure long-lasting performance.</p>

@@ -8,8 +8,6 @@ import whirlpoolLogo from './assets/whirpool logo.svg';
 import godrejLogo from './assets/godrejlogo.png';
 import sujathaLogo from './assets/sujathalogo.png';
 import ushaLogo from './assets/ushalogo.svg';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 import Navbar from './components/Navbar';
 import webBackJpg from './assets/webback.jpg';
 import chairmanImg from './assets/chairman.jpg';
@@ -17,6 +15,8 @@ import kitchenAppliancesImg from './assets/kitchenappliances.png';
 import essentialFurnitureImg from './assets/essentialfurniture.png';
 import electronicGadgetsImg from './assets/electronicgadjets.png';
 import afterSalesSupportImg from './assets/aftersalessupport.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function useScrollAnimations() {
   const location = useLocation();
@@ -56,6 +56,7 @@ const applianceCategories = [
     image: essentialFurnitureImg,
     description: 'Chairs, tables, beds, and more for comfortable living.'
   },
+  
   {
     name: 'Electronic Gadgets',
     image: electronicGadgetsImg,
@@ -126,11 +127,23 @@ const Home = () => {
   useEffect(() => {
     AOS.init({
       duration: 900,
-      once: false, // animations repeat
+      once: true,
       offset: 40,
-      easing: 'ease-in-out'
+      easing: 'ease-in-out',
+      disable: function() {
+        return window.innerWidth < 480;
+      }
     });
     AOS.refresh();
+  }, []);
+
+  useEffect(() => {
+    function setVh() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
   }, []);
 
   useScrollAnimations()
@@ -162,15 +175,11 @@ const Home = () => {
         toggleMobileMenu={toggleMobileMenu}
       />
       {/* Hero Section */}
-      <section id="home" className="hero" data-aos="fade-up" data-aos-duration="1000">
+      <section id="home" className="hero">
         <div className="hero-background">
-          <img
-            src={webBackJpg}
-            alt="Hero background"
-            className="hero-img"
-          />
+          <img src={webBackJpg} alt="Hero background" className="hero-img" />
         </div>
-        <div className="hero-content animate">
+        <div className="hero-content animate" data-aos="fade-up" data-aos-duration="1200">
           <h1 className="hero-title" data-aos="fade-down" data-aos-delay="200">Welcome to Kannamkulangara Home Appliances
             <span className="subtitle" data-aos="fade-left" data-aos-delay="400">Modern Living Starts Here</span>
           </h1>
@@ -186,13 +195,13 @@ const Home = () => {
         </div>
       </section>
       {/* About Us Section */}
-      <section id="about" className="about-section" data-aos="fade-right" data-aos-delay="200">
+      <section id="about" className="about-section">
         <div className="container">
-          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
+          <div className="section-header">
             <h2>About Us</h2>
           </div>
           <div className="about-content-grid">
-            <div className="about-text" data-aos="fade-up" data-aos-delay="400">
+            <div className="about-text">
               <p>
                 Kannamkulangara Home Appliances is dedicated to bringing the latest in home technology and comfort to families across India. With a legacy of trust and innovation, we offer a wide range of appliances and smart solutions designed to make your life easier, more efficient, and more enjoyable.
               </p>
@@ -200,21 +209,21 @@ const Home = () => {
                 Our mission is to deliver quality, reliability, and style in every product, while providing exceptional customer service and after-sales support. We believe in making modern living accessible to everyone.
               </p>
             </div>
-            <div className="about-image" data-aos="zoom-in" data-aos-delay="600">
+            <div className="about-image">
               <img src={logo} alt="About Kannamkulangara Home Appliances Logo" className="about-logo-img" />
             </div>
           </div>
         </div>
       </section>
       {/* Categories Section */}
-      <section id="categories" className="categories-section" data-aos="fade-left" data-aos-delay="200">
+      <section id="categories" className="categories-section">
         <div className="container">
-          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
+          <div className="section-header">
             <h2>Shop by Category</h2>
           </div>
           <div className="categories-grid">
             {applianceCategories.map((cat, idx) => (
-              <div className="category-card animate" key={cat.name} style={{ animationDelay: `${idx * 0.1 + 0.2}s` }} data-aos="zoom-in-up" data-aos-delay={400 + idx * 100}>
+              <div className="category-card" key={cat.name} data-aos="fade-up" data-aos-delay={`${idx * 100 + 200}`}>
                 <img src={cat.image} alt={cat.name} className="category-img" />
                 <h3>{cat.name}</h3>
                 <p>{cat.description}</p>
@@ -225,29 +234,29 @@ const Home = () => {
         </div>
       </section>
       {/* Purchase Schemes Section */}
-      <section id="purchase-schemes" className="purchase-schemes-section" data-aos="fade-up" data-aos-delay="200">
+      <section id="purchase-schemes" className="purchase-schemes-section">
         <div className="container">
-          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
+          <div className="section-header">
             <h2>Purchase Schemes</h2>
             <p>Flexible and customer-friendly payment options for every need</p>
           </div>
           <div className="schemes-grid">
-            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="400">
+            <div className="scheme-card" data-aos="fade-up" data-aos-delay="200">
               <span className="scheme-icon">💰</span>
               <h4>Ready Cash Payment</h4>
               <p>Pay the full amount upfront and enjoy instant ownership of your appliance.</p>
             </div>
-            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="500">
+            <div className="scheme-card" data-aos="fade-up" data-aos-delay="300">
               <span className="scheme-icon">📆</span>
               <h4>10 Week EMI</h4>
               <p>Spread your payments over 10 weeks with zero hassle and easy approval.</p>
             </div>
-            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="600">
+            <div className="scheme-card" data-aos="fade-up" data-aos-delay="400">
               <span className="scheme-icon">🗓️</span>
               <h4>6 Months EMI (Low Interest)</h4>
               <p>Enjoy your appliance now and pay over 6 months with a very low interest rate.</p>
             </div>
-            <div className="scheme-card animate" data-aos="flip-left" data-aos-delay="700">
+            <div className="scheme-card" data-aos="fade-up" data-aos-delay="500">
               <span className="scheme-icon">🤝</span>
               <h4>Customer Friendly EMI Schemes</h4>
               <p>Choose from a variety of EMI plans designed to suit your budget and needs.</p>
@@ -256,34 +265,34 @@ const Home = () => {
         </div>
       </section>
       {/* Brand Partners Section */}
-      <section id="brands" className="brands-section" data-aos="fade-up" data-aos-delay="200">
+      <section id="brands" className="brands-section">
         <div className="container">
-          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
+          <div className="section-header">
             <h2>Our Brand Partners</h2>
             <p>We offer products from the world's leading home appliance brands</p>
           </div>
           <div className="brands-logos-grid">
-            <img src={lgLogo} alt="LG" className="brand-logo" data-aos="zoom-in" data-aos-delay="400" />
-            <img src={samsungLogo} alt="Samsung" className="brand-logo" data-aos="zoom-in" data-aos-delay="500" />
-            <img src={whirlpoolLogo} alt="Whirlpool" className="brand-logo" data-aos="zoom-in" data-aos-delay="600" />
-            <img src={godrejLogo} alt="Godrej" className="brand-logo" data-aos="zoom-in" data-aos-delay="700" />
-            <img src={sujathaLogo} alt="Sujatha" className="brand-logo" data-aos="zoom-in" data-aos-delay="800" />
-            <img src={ushaLogo} alt="Usha" className="brand-logo" data-aos="zoom-in" data-aos-delay="900" />
+            <img src={lgLogo} alt="LG" className="brand-logo" />
+            <img src={samsungLogo} alt="Samsung" className="brand-logo" />
+            <img src={whirlpoolLogo} alt="Whirlpool" className="brand-logo" />
+            <img src={godrejLogo} alt="Godrej" className="brand-logo" />
+            <img src={sujathaLogo} alt="Sujatha" className="brand-logo" />
+            <img src={ushaLogo} alt="Usha" className="brand-logo" />
             {/* Add more logos here if you add more files */}
           </div>
         </div>
       </section>
       {/* Chairman's Message & Vision Section */}
-      <section id="chairman" className="chairman-section" data-aos="fade-up" data-aos-delay="200">
+      <section id="chairman" className="chairman-section">
         <div className="container">
-          <div className="section-header" data-aos="fade-up" data-aos-delay="300">
+          <div className="section-header">
             <h2>Chairman's Message & Vision</h2>
           </div>
           <div className="chairman-content-grid">
-            <div className="chairman-photo" data-aos="zoom-in" data-aos-delay="400">
+            <div className="chairman-photo">
               <img src={chairmanImg} alt="Chairman" className="chairman-img" />
             </div>
-            <div className="chairman-message-text" data-aos="fade-up" data-aos-delay="500">
+            <div className="chairman-message-text">
               <blockquote>
                 "At Kannamkulangara Home Appliances, our vision is to empower every home with smart, sustainable, and beautiful solutions. We are committed to innovation, quality, and customer satisfaction. Thank you for trusting us to be a part of your home."
               </blockquote>
@@ -302,14 +311,14 @@ const Home = () => {
         </div>
       </section>
       {/* Footer */}
-      <footer id="contact" className="footer" data-aos="fade-up" data-aos-delay="200">
+      <footer id="contact" className="footer">
         <div className="container">
           <div className="footer-content-grid">
-            <div className="footer-brand" data-aos="fade-up" data-aos-delay="300">
+            <div className="footer-brand">
               <h2>Kannamkulangara Home Appliances</h2>
               <p>Modern Living Starts Here</p>
             </div>
-            <div className="footer-links" data-aos="fade-up" data-aos-delay="400">
+            <div className="footer-links">
               <h4>Quick Links</h4>
               <ul>
                 <li><a href="#home" onClick={() => handleNavClick('home')}>Home</a></li>
@@ -322,13 +331,13 @@ const Home = () => {
                 <li><a href="/terms-and-conditions" style={{cursor:'pointer'}}>Terms & Conditions</a></li>
               </ul>
             </div>
-            <div className="footer-contact" data-aos="fade-up" data-aos-delay="500">
+            <div className="footer-contact">
               <h4>Contact</h4>
               <p>Thalore, Thaikkatusseri road<br />Thrissur, Kerala</p>
               <p>Phone: 8891966806</p>
               <p>Email: info@kannamkulangara.com</p>
             </div>
-            <div className="footer-social" data-aos="fade-up" data-aos-delay="600">
+            <div className="footer-social">
               <h4>Follow Us</h4>
               <div className="social-links">
                 <a href="https://www.linkedin.com/" className="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -350,7 +359,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="footer-bottom" data-aos="fade-up" data-aos-delay="700">
+          <div className="footer-bottom">
             <p>&copy; 2024 Kannamkulangara Home Appliances. All rights reserved.</p>
           </div>
         </div>

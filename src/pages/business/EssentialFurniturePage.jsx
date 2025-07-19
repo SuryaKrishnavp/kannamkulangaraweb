@@ -83,7 +83,7 @@ const EssentialFurniturePage = () => {
         ) : (
           <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))',gap:'1.5rem',padding:'0 1rem 2rem 1rem'}}>
             {filteredProducts.map(product => (
-              <div key={product.name} style={{background:'#fff',borderRadius:12,boxShadow:'0 2px 12px rgba(30,58,138,0.07)',padding:'1.2rem',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start'}}>
+              <div key={product.name} className="product-card card" style={{background:'#fff',borderRadius:12,boxShadow:'0 2px 12px rgba(30,58,138,0.07)',padding:'1.2rem',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start'}}>
                 {product.icon ? (
                   <motion.div
                     whileHover={{ scale: 1.18, rotate: [0, -10, 10, 0] }}

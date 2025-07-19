@@ -60,9 +60,7 @@ function App() {
       once: true,
       offset: 40,
       easing: 'ease-in-out',
-      disable: function() {
-        return window.innerWidth < 480;
-      }
+      disable: false // Always enable AOS, even on mobile
     })
   }, [])
   return (

@@ -25,85 +25,13 @@ import AfterSalesSupportPage from './pages/business/AfterSalesSupportPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
-  const [totalImages, setTotalImages] = useState(0);
-  const [loadingStage, setLoadingStage] = useState(0);
 
   useEffect(() => {
-    // Check if this is the first visit
-    const hasVisited = localStorage.getItem('hasVisitedKannamkulangara');
-    
-    console.log('Has visited before:', hasVisited);
-    
-    if (hasVisited) {
-      // Not first visit - skip loader
-      console.log('Skipping loader - not first visit');
-      setIsLoading(false);
-    } else {
-      // First time visitor - show loader
-      console.log('Showing loader - first visit');
-      setIsLoading(true);
-      
-      // Mark as visited immediately
-      localStorage.setItem('hasVisitedKannamkulangara', 'true');
-      
-      // Critical images to preload
-      const criticalImages = [
-        '/src/assets/webback.jpg',
-        '/src/assets/logo.png',
-        '/src/assets/chairman.jpg',
-        '/src/assets/godrejlogo.png',
-        '/src/assets/lglogo.png',
-        '/src/assets/samsunglogo.svg',
-        '/src/assets/sujathalogo.png',
-        '/src/assets/ushalogo.svg',
-        '/src/assets/whirpool logo.svg'
-      ];
-      
-      setTotalImages(criticalImages.length);
-      let loadedCount = 0;
-      
-      const checkAllImagesLoaded = () => {
-        loadedCount++;
-        setImagesLoaded(loadedCount);
-        
-        if (loadedCount >= criticalImages.length) {
-          console.log('All images loaded, completing loader');
-          // All images loaded, complete the loader
-          setLoadingStage(4); // Final stage
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 1000);
-        }
-      };
-      
-      // Preload all critical images
-      criticalImages.forEach((src) => {
-        const img = new Image();
-        img.onload = () => {
-          console.log('Image loaded:', src);
-          checkAllImagesLoaded();
-        };
-        img.onerror = () => {
-          console.log('Image failed to load:', src);
-          checkAllImagesLoaded();
-        };
-        img.src = src;
-      });
-      
-      // Smooth stage progression
-      const stages = [
-        { stage: 1, delay: 500 },
-        { stage: 2, delay: 1500 },
-        { stage: 3, delay: 2500 }
-      ];
-      
-      stages.forEach(({ stage, delay }) => {
-        setTimeout(() => {
-          setLoadingStage(stage);
-        }, delay);
-      });
-    }
+    // Hide loader after window load (all resources loaded)
+    const handleLoad = () => {
+      setTimeout(() => setIsLoading(false), 400); // short delay for smoothness
+    };
+    window.addEventListener('load', handleLoad);
 
     // Initialize AOS
     AOS.init({
@@ -114,46 +42,19 @@ function App() {
       disable: false
     });
 
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
   }, []);
 
-  // Loading Screen Component
+  // Pure CSS Loader
   const LoadingScreen = () => (
     <div className="loading-screen">
       <div className="loading-content">
-        <div className="loading-logo">
-          <img src="/src/assets/logo.png" alt="Kannamkulangara" />
-          <h2>Kannamkulangara</h2>
-          <p>Home Appliances</p>
-        </div>
-        
-        <div className="loading-progress">
-          <div className="progress-bar">
-            <div className="progress-fill"></div>
-          </div>
-          <div className="progress-text">
-            {loadingStage === 0 && "0%"}
-            {loadingStage === 1 && "25%"}
-            {loadingStage === 2 && "60%"}
-            {loadingStage === 3 && "90%"}
-            {loadingStage === 4 && "100%"}
-          </div>
-        </div>
-
         <div className="loading-spinner">
           <div className="spinner"></div>
         </div>
-
-        <div className="loading-message">
-          {loadingStage === 0 && "Welcome to Kannamkulangara..."}
-          {loadingStage === 1 && "Loading your experience..."}
-          {loadingStage === 2 && "Preparing everything..."}
-          {loadingStage === 3 && "Loading images and assets..."}
-          {loadingStage === 4 && "Almost ready..."}
-        </div>
-        
-        <div className="loading-status">
-          {totalImages > 0 && `Loading assets: ${imagesLoaded}/${totalImages}`}
-        </div>
+        <div className="loading-message">Loading, please wait…</div>
       </div>
     </div>
   );
@@ -174,7 +75,6 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          
           {/* Business Routes */}
           <Route path="/home-appliances" element={<HomeAppliancePage />} />
           <Route path="/kitchen-appliances" element={<KitchenAppliancesPage />} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -24,16 +24,7 @@ import ElectronicGadgetsPage from './pages/business/ElectronicGadgetsPage';
 import AfterSalesSupportPage from './pages/business/AfterSalesSupportPage';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Hide loader after window load (all resources loaded)
-    const handleLoad = () => {
-      setTimeout(() => setIsLoading(false), 400); // short delay for smoothness
-    };
-    window.addEventListener('load', handleLoad);
-
-    // Initialize AOS
+  React.useEffect(() => {
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
@@ -41,27 +32,7 @@ function App() {
       mirror: true,
       disable: false
     });
-
-    return () => {
-      window.removeEventListener('load', handleLoad);
-    };
   }, []);
-
-  // Pure CSS Loader
-  const LoadingScreen = () => (
-    <div className="loading-screen">
-      <div className="loading-content">
-        <div className="loading-spinner">
-          <div className="spinner"></div>
-        </div>
-        <div className="loading-message">Loading, please wait…</div>
-      </div>
-    </div>
-  );
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
 
   return (
     <Router>

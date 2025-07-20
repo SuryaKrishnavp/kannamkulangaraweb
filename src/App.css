@@ -18,6 +18,237 @@
   --shadow-dark: rgba(0, 0, 0, 0.2);
 }
 
+/* Loading Screen Styles */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.loading-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/src/assets/webback.jpg') center/cover;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.loading-content {
+  text-align: center;
+  color: var(--white);
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.loading-logo {
+  margin-bottom: 3rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.loading-logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.loading-logo h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.loading-logo p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: var(--light-gold);
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.loading-progress {
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--light-gold));
+  border-radius: 4px;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.progress-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.loading-spinner {
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top: 3px solid var(--accent-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.loading-message {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  animation: fadeInUp 1s ease-out 0.9s both;
+  min-height: 1.5rem;
+}
+
+/* Loading Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Floating particles for loading screen */
+.loading-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
+  animation: particleFloat 20s infinite linear;
+  z-index: -1;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Responsive loading screen */
+@media (max-width: 768px) {
+  .loading-content {
+    max-width: 300px;
+    padding: 1.5rem;
+  }
+  
+  .loading-logo img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .loading-logo h2 {
+    font-size: 1.5rem;
+  }
+  
+  .loading-logo p {
+    font-size: 1rem;
+  }
+  
+  .progress-bar {
+    height: 6px;
+  }
+  
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-content {
+    max-width: 250px;
+    padding: 1rem;
+  }
+  
+  .loading-logo {
+    margin-bottom: 2rem;
+  }
+  
+  .loading-logo img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .loading-logo h2 {
+    font-size: 1.3rem;
+  }
+  
+  .loading-logo p {
+    font-size: 0.9rem;
+  }
+  
+  .progress-text {
+    font-size: 1rem;
+  }
+  
+  .loading-message {
+    font-size: 0.9rem;
+  }
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -764,7 +995,6 @@ body {
   color: inherit;
   transform: scale(1.13);
   box-shadow: 0 4px 16px rgba(30,58,138,0.15);
-  border-color: var(--accent-gold);
 }
 
 .newsletter {
@@ -1677,43 +1907,7 @@ body.menu-open, .app.menu-open {
   flex-wrap: wrap;
 }
 
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  color: var(--white);
-  font-size: 1.5rem;
-  transition: background 0.3s, color 0.3s;
-  text-decoration: none;
-}
-
-.social-link:hover {
-  background: var(--accent-gold);
-  color: var(--white);
-}
-
-.social-link[aria-label="LinkedIn"] {
-  color: #0A66C2;
-}
-.social-link[aria-label="Instagram"] {
-  color: #E4405F;
-}
-.social-link[aria-label="WhatsApp"] {
-  color: #25D366;
-}
-.social-link[aria-label="YouTube"] {
-  color: #FF0000;
-}
-.social-link:hover {
-  background: #e5e7eb;
-  color: inherit;
-  transform: scale(1.13);
-  box-shadow: 0 4px 16px rgba(30,58,138,0.15);
-}
+/* Social media icons already styled above - removing duplicate */
 
 .newsletter {
   display: flex;

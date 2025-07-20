@@ -164,7 +164,7 @@ const Home = () => {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-background">
-          <img src="/webback.jpg" alt="Hero background" className="hero-img" />
+          <img src="/webback.webp" alt="Hero background" className="hero-img" />
         </div>
         <div className="hero-content animate" data-aos="fade-up" data-aos-duration="1200">
           <h1 className="hero-title" data-aos="fade-down" data-aos-delay="200">Welcome to Kannamkulangara Home Appliances

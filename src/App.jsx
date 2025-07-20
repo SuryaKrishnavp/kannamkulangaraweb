@@ -23,8 +23,17 @@ import EssentialFurniturePage from './pages/business/EssentialFurniturePage';
 import ElectronicGadgetsPage from './pages/business/ElectronicGadgetsPage';
 import AfterSalesSupportPage from './pages/business/AfterSalesSupportPage';
 
+const coolTips = [
+  'Bringing comfort to your home…',
+  'Loading a world of appliances…',
+  'Making life easier, one product at a time…',
+  'Almost there! Preparing your experience…',
+  'Quality you can trust, loading…',
+];
+
 function App() {
   const [fullyLoaded, setFullyLoaded] = useState(false);
+  const [tipIndex, setTipIndex] = useState(0);
 
   useEffect(() => {
     const handleLoad = () => setFullyLoaded(true);
@@ -40,28 +49,22 @@ function App() {
       mirror: true,
       disable: false
     });
-    return () => window.removeEventListener('load', handleLoad);
+    // Rotate cool tips every 2.5s
+    const tipInterval = setInterval(() => {
+      setTipIndex((prev) => (prev + 1) % coolTips.length);
+    }, 2500);
+    return () => {
+      window.removeEventListener('load', handleLoad);
+      clearInterval(tipInterval);
+    };
   }, []);
 
   if (!fullyLoaded) {
     return (
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)',
-        zIndex: 9999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: '#fff',
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1.3rem',
-        letterSpacing: '0.01em'
-      }}>
-        Loading, please wait…
+      <div className="loader-overlay">
+        <div className="cool-spinner"></div>
+        <div className="cool-loading-text">Loading Kannamkulangara Web…</div>
+        <div className="cool-tips">{coolTips[tipIndex]}</div>
       </div>
     );
   }

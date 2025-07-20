@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -24,7 +24,15 @@ import ElectronicGadgetsPage from './pages/business/ElectronicGadgetsPage';
 import AfterSalesSupportPage from './pages/business/AfterSalesSupportPage';
 
 function App() {
-  React.useEffect(() => {
+  const [fullyLoaded, setFullyLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleLoad = () => setFullyLoaded(true);
+    if (document.readyState === 'complete') {
+      setFullyLoaded(true);
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
@@ -32,7 +40,31 @@ function App() {
       mirror: true,
       disable: false
     });
+    return () => window.removeEventListener('load', handleLoad);
   }, []);
+
+  if (!fullyLoaded) {
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)',
+        zIndex: 9999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#fff',
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: '1.3rem',
+        letterSpacing: '0.01em'
+      }}>
+        Loading, please wait…
+      </div>
+    );
+  }
 
   return (
     <Router>

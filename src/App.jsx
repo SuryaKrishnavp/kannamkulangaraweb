@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -23,44 +23,8 @@ import EssentialFurniturePage from './pages/business/EssentialFurniturePage';
 import ElectronicGadgetsPage from './pages/business/ElectronicGadgetsPage';
 import AfterSalesSupportPage from './pages/business/AfterSalesSupportPage';
 
-const coolTips = [
-  'Bringing comfort to your home…',
-  'Loading a world of appliances…',
-  'Making life easier, one product at a time…',
-  'Almost there! Preparing your experience…',
-  'Quality you can trust, loading…',
-];
-
 function App() {
-  const [fullyLoaded, setFullyLoaded] = useState(false);
-  const [tipIndex, setTipIndex] = useState(0);
-
-  useEffect(() => {
-    let imagesLoaded = 0;
-    const requiredImages = ['/webback.jpg', '/logo.png'];
-    const handleImageLoad = () => {
-      imagesLoaded++;
-      if (imagesLoaded === requiredImages.length) {
-        setFullyLoaded(true);
-      }
-    };
-    // Preload both images
-    requiredImages.forEach((src) => {
-      const img = new window.Image();
-      img.onload = handleImageLoad;
-      img.onerror = handleImageLoad;
-      img.src = src;
-    });
-    // Also wait for window.onload (all resources loaded)
-    const handleWindowLoad = () => {
-      // If images already loaded, setFullyLoaded will be called above
-      // If not, do nothing (wait for images)
-    };
-    if (document.readyState === 'complete') {
-      // If already loaded, do nothing (wait for images)
-    } else {
-      window.addEventListener('load', handleWindowLoad);
-    }
+  React.useEffect(() => {
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
@@ -68,25 +32,7 @@ function App() {
       mirror: true,
       disable: false
     });
-    // Rotate cool tips every 2.5s
-    const tipInterval = setInterval(() => {
-      setTipIndex((prev) => (prev + 1) % coolTips.length);
-    }, 2500);
-    return () => {
-      window.removeEventListener('load', handleWindowLoad);
-      clearInterval(tipInterval);
-    };
   }, []);
-
-  if (!fullyLoaded) {
-    return (
-      <div className="loader-overlay">
-        <div className="cool-spinner"></div>
-        <div className="cool-loading-text">Loading Kannamkulangara Web…</div>
-        <div className="cool-tips">{coolTips[tipIndex]}</div>
-      </div>
-    );
-  }
 
   return (
     <Router>

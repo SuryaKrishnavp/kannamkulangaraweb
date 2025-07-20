@@ -36,11 +36,30 @@ function App() {
   const [tipIndex, setTipIndex] = useState(0);
 
   useEffect(() => {
-    const handleLoad = () => setFullyLoaded(true);
+    let imagesLoaded = 0;
+    const requiredImages = ['/webback.jpg', '/logo.png'];
+    const handleImageLoad = () => {
+      imagesLoaded++;
+      if (imagesLoaded === requiredImages.length) {
+        setFullyLoaded(true);
+      }
+    };
+    // Preload both images
+    requiredImages.forEach((src) => {
+      const img = new window.Image();
+      img.onload = handleImageLoad;
+      img.onerror = handleImageLoad;
+      img.src = src;
+    });
+    // Also wait for window.onload (all resources loaded)
+    const handleWindowLoad = () => {
+      // If images already loaded, setFullyLoaded will be called above
+      // If not, do nothing (wait for images)
+    };
     if (document.readyState === 'complete') {
-      setFullyLoaded(true);
+      // If already loaded, do nothing (wait for images)
     } else {
-      window.addEventListener('load', handleLoad);
+      window.addEventListener('load', handleWindowLoad);
     }
     AOS.init({
       duration: 800,
@@ -54,7 +73,7 @@ function App() {
       setTipIndex((prev) => (prev + 1) % coolTips.length);
     }, 2500);
     return () => {
-      window.removeEventListener('load', handleLoad);
+      window.removeEventListener('load', handleWindowLoad);
       clearInterval(tipInterval);
     };
   }, []);

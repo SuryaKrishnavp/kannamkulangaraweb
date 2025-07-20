@@ -25,9 +25,9 @@ import AfterSalesSupportPage from './pages/business/AfterSalesSupportPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [loadingProgress, setLoadingProgress] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [totalImages, setTotalImages] = useState(0);
+  const [loadingStage, setLoadingStage] = useState(0);
 
   useEffect(() => {
     // Check if this is the first visit
@@ -70,7 +70,7 @@ function App() {
         if (loadedCount >= criticalImages.length) {
           console.log('All images loaded, completing loader');
           // All images loaded, complete the loader
-          setLoadingProgress(100);
+          setLoadingStage(4); // Final stage
           setTimeout(() => {
             setIsLoading(false);
           }, 1000);
@@ -91,26 +91,18 @@ function App() {
         img.src = src;
       });
       
-      // Start progress animation with smoother updates
-      let currentProgress = 0;
-      const targetProgress = 90; // Only go to 90% until images are loaded
-      const totalDuration = 3000; // 3 seconds for smoother animation
-      const updateInterval = 100; // Update every 100ms to reduce blinking
-      const progressPerUpdate = (targetProgress * updateInterval) / totalDuration;
+      // Smooth stage progression
+      const stages = [
+        { stage: 1, delay: 500 },
+        { stage: 2, delay: 1500 },
+        { stage: 3, delay: 2500 }
+      ];
       
-      const updateProgress = () => {
-        if (currentProgress >= targetProgress) {
-          setLoadingProgress(targetProgress);
-          return;
-        }
-        
-        currentProgress += progressPerUpdate;
-        setLoadingProgress(Math.min(currentProgress, targetProgress));
-        setTimeout(updateProgress, updateInterval);
-      };
-      
-      // Start the progress animation
-      setTimeout(updateProgress, 300);
+      stages.forEach(({ stage, delay }) => {
+        setTimeout(() => {
+          setLoadingStage(stage);
+        }, delay);
+      });
     }
 
     // Initialize AOS
@@ -136,12 +128,15 @@ function App() {
         
         <div className="loading-progress">
           <div className="progress-bar">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${loadingProgress}%` }}
-            ></div>
+            <div className="progress-fill"></div>
           </div>
-          <div className="progress-text">{Math.round(loadingProgress)}%</div>
+          <div className="progress-text">
+            {loadingStage === 0 && "0%"}
+            {loadingStage === 1 && "25%"}
+            {loadingStage === 2 && "60%"}
+            {loadingStage === 3 && "90%"}
+            {loadingStage === 4 && "100%"}
+          </div>
         </div>
 
         <div className="loading-spinner">
@@ -149,11 +144,11 @@ function App() {
         </div>
 
         <div className="loading-message">
-          {loadingProgress < 25 && "Welcome to Kannamkulangara..."}
-          {loadingProgress >= 25 && loadingProgress < 50 && "Loading your experience..."}
-          {loadingProgress >= 50 && loadingProgress < 75 && "Preparing everything..."}
-          {loadingProgress >= 75 && loadingProgress < 90 && "Loading images and assets..."}
-          {loadingProgress >= 90 && "Almost ready..."}
+          {loadingStage === 0 && "Welcome to Kannamkulangara..."}
+          {loadingStage === 1 && "Loading your experience..."}
+          {loadingStage === 2 && "Preparing everything..."}
+          {loadingStage === 3 && "Loading images and assets..."}
+          {loadingStage === 4 && "Almost ready..."}
         </div>
         
         <div className="loading-status">

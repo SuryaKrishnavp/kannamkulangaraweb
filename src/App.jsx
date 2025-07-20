@@ -26,6 +26,8 @@ import AfterSalesSupportPage from './pages/business/AfterSalesSupportPage';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [totalImages, setTotalImages] = useState(0);
 
   useEffect(() => {
     // Check if this is the first visit
@@ -45,32 +47,70 @@ function App() {
       // Mark as visited immediately
       localStorage.setItem('hasVisitedKannamkulangara', 'true');
       
-      // Simple smooth loading animation
+      // Critical images to preload
+      const criticalImages = [
+        '/src/assets/webback.jpg',
+        '/src/assets/logo.png',
+        '/src/assets/chairman.jpg',
+        '/src/assets/godrejlogo.png',
+        '/src/assets/lglogo.png',
+        '/src/assets/samsunglogo.svg',
+        '/src/assets/sujathalogo.png',
+        '/src/assets/ushalogo.svg',
+        '/src/assets/whirpool logo.svg'
+      ];
+      
+      setTotalImages(criticalImages.length);
+      let loadedCount = 0;
+      
+      const checkAllImagesLoaded = () => {
+        loadedCount++;
+        setImagesLoaded(loadedCount);
+        
+        if (loadedCount >= criticalImages.length) {
+          console.log('All images loaded, completing loader');
+          // All images loaded, complete the loader
+          setLoadingProgress(100);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 1000);
+        }
+      };
+      
+      // Preload all critical images
+      criticalImages.forEach((src) => {
+        const img = new Image();
+        img.onload = () => {
+          console.log('Image loaded:', src);
+          checkAllImagesLoaded();
+        };
+        img.onerror = () => {
+          console.log('Image failed to load:', src);
+          checkAllImagesLoaded();
+        };
+        img.src = src;
+      });
+      
+      // Start progress animation
       let currentProgress = 0;
-      const targetProgress = 100;
-      const totalDuration = 3000; // 3 seconds
-      const updateInterval = 30; // Update every 30ms
+      const targetProgress = 90; // Only go to 90% until images are loaded
+      const totalDuration = 2500; // 2.5 seconds
+      const updateInterval = 50; // Update every 50ms
       const progressPerUpdate = (targetProgress * updateInterval) / totalDuration;
       
       const updateProgress = () => {
-        currentProgress += progressPerUpdate;
-        
         if (currentProgress >= targetProgress) {
-          setLoadingProgress(100);
-          console.log('Loading complete, hiding loader');
-          // Hide loader after reaching 100%
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 500);
+          setLoadingProgress(targetProgress);
           return;
         }
         
-        setLoadingProgress(currentProgress);
+        currentProgress += progressPerUpdate;
+        setLoadingProgress(Math.min(currentProgress, targetProgress));
         setTimeout(updateProgress, updateInterval);
       };
       
       // Start the progress animation
-      setTimeout(updateProgress, 100);
+      setTimeout(updateProgress, 200);
     }
 
     // Initialize AOS
@@ -80,18 +120,6 @@ function App() {
       once: false,
       mirror: true,
       disable: false
-    });
-
-    // Preload critical images
-    const criticalImages = [
-      '/src/assets/webback.jpg',
-      '/src/assets/logo.png',
-      '/src/assets/chairman.jpg'
-    ];
-
-    criticalImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
     });
 
   }, []);
@@ -124,7 +152,12 @@ function App() {
           {loadingProgress < 25 && "Welcome to Kannamkulangara..."}
           {loadingProgress >= 25 && loadingProgress < 50 && "Loading your experience..."}
           {loadingProgress >= 50 && loadingProgress < 75 && "Preparing everything..."}
-          {loadingProgress >= 75 && "Almost ready..."}
+          {loadingProgress >= 75 && loadingProgress < 90 && "Loading images and assets..."}
+          {loadingProgress >= 90 && "Almost ready..."}
+        </div>
+        
+        <div className="loading-status">
+          {totalImages > 0 && `Loading assets: ${imagesLoaded}/${totalImages}`}
         </div>
       </div>
     </div>

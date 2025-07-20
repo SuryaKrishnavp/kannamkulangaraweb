@@ -110,6 +110,7 @@
   font-weight: 600;
   color: var(--white);
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  transition: opacity 0.2s ease-out;
 }
 
 .loading-spinner {
@@ -134,6 +135,7 @@
   font-weight: 500;
   animation: fadeInUp 1s ease-out 0.9s both;
   min-height: 1.5rem;
+  transition: opacity 0.3s ease-out;
 }
 
 .loading-status {
@@ -143,6 +145,7 @@
   font-weight: 400;
   margin-top: 0.5rem;
   animation: fadeInUp 1s ease-out 1.2s both;
+  transition: opacity 0.3s ease-out;
 }
 
 /* Loading Animations */

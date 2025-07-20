@@ -91,11 +91,11 @@ function App() {
         img.src = src;
       });
       
-      // Start progress animation
+      // Start progress animation with smoother updates
       let currentProgress = 0;
       const targetProgress = 90; // Only go to 90% until images are loaded
-      const totalDuration = 2500; // 2.5 seconds
-      const updateInterval = 50; // Update every 50ms
+      const totalDuration = 3000; // 3 seconds for smoother animation
+      const updateInterval = 100; // Update every 100ms to reduce blinking
       const progressPerUpdate = (targetProgress * updateInterval) / totalDuration;
       
       const updateProgress = () => {
@@ -110,7 +110,7 @@ function App() {
       };
       
       // Start the progress animation
-      setTimeout(updateProgress, 200);
+      setTimeout(updateProgress, 300);
     }
 
     // Initialize AOS

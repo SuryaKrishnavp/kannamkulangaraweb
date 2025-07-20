@@ -1,4 +1,3 @@
-import logo from '../assets/logo.png';
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { FaLinkedin, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
@@ -16,7 +15,7 @@ const Navbar = ({ isScrolled, activeSection, isMobileMenuOpen, handleNavClick, t
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <div className="logo">
-          <img src={logo} alt="Kannamkulangara Logo" className="header-logo-img" />
+          <img src="/logo.png" alt="Kannamkulangara Logo" className="header-logo-img" />
           <h2 className="logo-text-nowrap">
             <span className="logo-full">Kannamkulangara Home Appliances</span>
             <span className="logo-mobile">Kannamkulangara</span>

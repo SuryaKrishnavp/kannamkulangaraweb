@@ -1,30 +1,19 @@
 import Navbar from '../../components/Navbar';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ceilingFanImg from '../../assets/appliances/ceilingfan.png';
-import tableFanImg from '../../assets/appliances/tablefan.png';
-import refrigeratorImg from '../../assets/appliances/refrigerator.png';
-import airConditionerImg from '../../assets/appliances/airconditioner.png';
-import microwaveOvenImg from '../../assets/appliances/microwaveoven.png';
-import inductionCooktopImg from '../../assets/appliances/inductioncooktop.png';
-import waterPurifierImg from '../../assets/appliances/waterpurifier.png';
-import mixerGrinderImg from '../../assets/appliances/mixergrinder.png';
-import airFryerImg from '../../assets/appliances/airfryer.png';
-import electricKettleImg from '../../assets/appliances/electrickettle.png';
-import pressureCookerImg from '../../assets/appliances/pressurecooker.png';
 
 const kitchenProducts = [
-  { name: 'Ceiling Fan', image: ceilingFanImg },
-  { name: 'Table Fan', image: tableFanImg },
-  { name: 'Refrigerator', image: refrigeratorImg },
-  { name: 'Air Conditioner', image: airConditionerImg },
-  { name: 'Microwave Oven', image: microwaveOvenImg },
-  { name: 'Induction Cooktop', image: inductionCooktopImg },
-  { name: 'Water Purifier', image: waterPurifierImg },
-  { name: 'Mixer Grinder', image: mixerGrinderImg },
-  { name: 'Air Fryer', image: airFryerImg },
-  { name: 'Electric Kettle', image: electricKettleImg },
-  { name: 'Pressure Cooker', image: pressureCookerImg },
+  { name: 'Ceiling Fan', image: '/appliances/ceilingfan.png' },
+  { name: 'Table Fan', image: '/appliances/tablefan.png' },
+  { name: 'Refrigerator', image: '/appliances/refrigerator.png' },
+  { name: 'Air Conditioner', image: '/appliances/airconditioner.png' },
+  { name: 'Microwave Oven', image: '/appliances/microwaveoven.png' },
+  { name: 'Induction Cooktop', image: '/appliances/inductioncooktop.png' },
+  { name: 'Water Purifier', image: '/appliances/waterpurifier.png' },
+  { name: 'Mixer Grinder', image: '/appliances/mixergrinder.png' },
+  { name: 'Air Fryer', image: '/appliances/airfryer.png' },
+  { name: 'Electric Kettle', image: '/appliances/electrickettle.png' },
+  { name: 'Pressure Cooker', image: '/appliances/pressurecooker.png' },
 ];
 
 const whatsappNumber = '8891966806';

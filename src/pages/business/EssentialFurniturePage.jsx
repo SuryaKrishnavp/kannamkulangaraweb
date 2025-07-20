@@ -1,14 +1,11 @@
 import Navbar from '../../components/Navbar';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import bedImg from '../../assets/furniture/bed.png';
-import studyTableImg from '../../assets/furniture/studytable.png';
-import shoeRackImg from '../../assets/furniture/shoerack.png';
 
 const furnitureProducts = [
-  { name: 'Bed', image: bedImg },
-  { name: 'Study Table', image: studyTableImg },
-  { name: 'Shoe Rack', image: shoeRackImg },
+  { name: 'Bed', image: '/furniture/bed.png' },
+  { name: 'Study Table', image: '/furniture/studytable.png' },
+  { name: 'Shoe Rack', image: '/furniture/shoerack.png' },
 ];
 const whatsappNumber = '8891966806';
 

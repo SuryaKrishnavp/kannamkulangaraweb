@@ -1,20 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
-import logo from './assets/logo.png';
-import lgLogo from './assets/lglogo.png';
-import samsungLogo from './assets/samsunglogo.svg';
-import whirlpoolLogo from './assets/whirpool logo.svg';
-import godrejLogo from './assets/godrejlogo.png';
-import sujathaLogo from './assets/sujathalogo.png';
-import ushaLogo from './assets/ushalogo.svg';
 import Navbar from './components/Navbar';
-import webBackJpg from './assets/webback.jpg';
-import chairmanImg from './assets/chairman.jpg';
-import kitchenAppliancesImg from './assets/kitchenappliances.png';
-import essentialFurnitureImg from './assets/essentialfurniture.png';
-import electronicGadgetsImg from './assets/electronicgadjets.png';
-import afterSalesSupportImg from './assets/aftersalessupport.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -48,23 +35,23 @@ function useScrollAnimations() {
 const applianceCategories = [
   {
     name: 'Kitchen Appliances',
-    image: kitchenAppliancesImg,
+    image: '/kitchenappliances.png',
     description: 'Refrigerators, ovens, dishwashers, and more for a modern kitchen.'
   },
   {
     name: 'Essential Furnitures',
-    image: essentialFurnitureImg,
+    image: '/essentialfurniture.png',
     description: 'Chairs, tables, beds, and more for comfortable living.'
   },
   
   {
     name: 'Electronic Gadgets',
-    image: electronicGadgetsImg,
+    image: '/electronicgadjets.png',
     description: 'Smartphones, laptops, smart TVs, and more.'
   },
   {
     name: 'After-Sales Support',
-    image: afterSalesSupportImg,
+    image: '/aftersalessupport.png',
     description: 'Comprehensive maintenance and repair services.'
   }
 ]
@@ -177,7 +164,7 @@ const Home = () => {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-background">
-          <img src={webBackJpg} alt="Hero background" className="hero-img" />
+          <img src="/webback.jpg" alt="Hero background" className="hero-img" />
         </div>
         <div className="hero-content animate" data-aos="fade-up" data-aos-duration="1200">
           <h1 className="hero-title" data-aos="fade-down" data-aos-delay="200">Welcome to Kannamkulangara Home Appliances
@@ -210,7 +197,7 @@ const Home = () => {
               </p>
             </div>
             <div className="about-image">
-              <img src={logo} alt="About Kannamkulangara Home Appliances Logo" className="about-logo-img" />
+              <img src="/logo.png" alt="About Kannamkulangara Home Appliances Logo" className="about-logo-img" />
             </div>
           </div>
         </div>
@@ -272,12 +259,12 @@ const Home = () => {
             <p>We offer products from the world's leading home appliance brands</p>
           </div>
           <div className="brands-logos-grid">
-            <img src={lgLogo} alt="LG" className="brand-logo" />
-            <img src={samsungLogo} alt="Samsung" className="brand-logo" />
-            <img src={whirlpoolLogo} alt="Whirlpool" className="brand-logo" />
-            <img src={godrejLogo} alt="Godrej" className="brand-logo" />
-            <img src={sujathaLogo} alt="Sujatha" className="brand-logo" />
-            <img src={ushaLogo} alt="Usha" className="brand-logo" />
+            <img src="/lglogo.png" alt="LG" className="brand-logo" />
+            <img src="/samsunglogo.svg" alt="Samsung" className="brand-logo" />
+            <img src="/whirpool logo.svg" alt="Whirlpool" className="brand-logo" />
+            <img src="/godrejlogo.png" alt="Godrej" className="brand-logo" />
+            <img src="/sujathalogo.png" alt="Sujatha" className="brand-logo" />
+            <img src="/ushalogo.svg" alt="Usha" className="brand-logo" />
             {/* Add more logos here if you add more files */}
           </div>
         </div>
@@ -290,7 +277,7 @@ const Home = () => {
           </div>
           <div className="chairman-content-grid">
             <div className="chairman-photo">
-              <img src={chairmanImg} alt="Chairman" className="chairman-img" />
+              <img src="/chairman.jpg" alt="Chairman" className="chairman-img" />
             </div>
             <div className="chairman-message-text">
               <blockquote>

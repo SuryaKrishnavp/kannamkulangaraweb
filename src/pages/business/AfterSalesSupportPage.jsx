@@ -58,7 +58,7 @@ const AfterSalesSupportPage = () => {
       <div style={{maxWidth:600,margin:'1.5rem auto 2rem auto',padding:'0 1rem'}}>
         <input
           type="text"
-          placeholder="Search products..."
+          placeholder="Search Services..."
           value={search}
           onChange={e => setSearch(e.target.value)}
           style={{width:'100%',padding:'0.7rem 1rem',fontSize:'1.1rem',borderRadius:8,border:'1px solid #ccc',marginBottom:0}}

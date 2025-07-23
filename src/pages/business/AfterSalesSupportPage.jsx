@@ -77,7 +77,7 @@ const AfterSalesSupportPage = () => {
               <img src={product.image} alt={product.name} style={{width:'100%',height:140,objectFit:'cover',borderRadius:8,marginBottom:12}} />
               <h4 style={{margin:'0 0 0.5rem 0',fontWeight:600,fontSize:'1.1rem',color:'#1e3a8a',textAlign:'center'}}>{product.name}</h4>
               <a
-                href={`https://wa.me/91${whatsappNumber}?text=Hi%2C%20I%20am%20interested%20in%20this%20product%3A%20${encodeURIComponent(product.name)}`}
+                href={`https://wa.me/91${whatsappNumber}?text=Hi%2C%20I%20am%20interested%20in%20this%20service%3A%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Enquire on WhatsApp"

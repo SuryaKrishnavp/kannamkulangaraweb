@@ -31,12 +31,10 @@ const AfterSalesSupportPage = () => {
   };
 
   const supportProducts = [
-    { name: 'Installation Service', image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Maintenance', image: 'https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Repair', image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Warranty Service', image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Spare Parts', image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80' },
-    { name: 'Customer Helpline', image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
+    { name: 'Installation Service', image: '/services/installation.png' },
+    { name: 'Maintenance', image: '/services/maintenance.png' },
+    { name: 'Warranty Service', image: '/services/warrenty.png' },
+    { name: 'Customer Helpline', image: '/services/helpline.png' },
     // ...add up to 50 products
   ];
   const whatsappNumber = '8891966806';

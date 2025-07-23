@@ -6,6 +6,8 @@ const furnitureProducts = [
   { name: 'Bed', image: '/furniture/bed.png' },
   { name: 'Study Table', image: '/furniture/studytable.png' },
   { name: 'Shoe Rack', image: '/furniture/shoerack.png' },
+  { name: 'Chairs', image: '/furniture/chairs.png' },
+  { name: 'Diwan Coat', image: '/furniture/diwancoat.png' },
 ];
 const whatsappNumber = '8891966806';
 
